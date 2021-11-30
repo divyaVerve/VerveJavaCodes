@@ -1,11 +1,7 @@
-package com.fbAssignment.pageFactory;
-
-import java.util.Scanner;
+package com.pageFactory;
 
 public class SignUpPage {
-	Scanner scannerSc=new Scanner(System.in);
-	
- 
+
 	public void verifySignUpPageIsDisplayed()
 	{
 		System.out.println("Signup page is displayed:");
@@ -13,51 +9,41 @@ public class SignUpPage {
 	public void setFirstName()
 	{
 		System.out.println("Enter the FirstName:");
-		String strName1=scannerSc.next();
-		System.out.println("FirstName:"+strName1);
 		
 	}
 	public void setSurname()
 	{
 		System.out.println("Enter the Surname:");
-		String strName2=scannerSc.next();
-		System.out.println("FirstName:"+strName2);
+		
 	}
-	public void setMobileNumber()
+	public void setMobileNumberOrEmailId()
 	{
-		System.out.println("Enter Mobile Number:");
-		 long longNum=scannerSc.nextLong();
-		System.out.println("Mobile Number:"+longNum);
+		System.out.println("Enter Mobile Number or Email id:");
 	}
-	public void setEmail_id()
+	public void setNewPassword()
 	{
-		System.out.println("Enter Email id:");
-		String strEmail=scannerSc.next();
-		System.out.println("Email Id:"+strEmail);
+		System.out.println("Enter New Password:");
 	}
-	public void setPassword()
+	public void selectDay()
 	{
-		System.out.println("Enter Password:");
-		String strPassword=scannerSc.next();
-		System.out.println("Email password:"+strPassword);
+		System.out.println("Select Day:");
+		
 	}
-	public void setDate()
+	public void selectMonth()
 	{
-		System.out.println("Enter date:");
-		int intDate=scannerSc.nextInt();
-		System.out.println("Enter Month:");
-		String strMonth=scannerSc.next();
-		System.out.println("Enter Year:");
-		int intYear=scannerSc.nextInt();
-		System.out.println(intDate+"-"+strMonth+"-"+intYear);
+		System.out.println("Select Month:");
 	}
-	public void setGender()
+	public void selectYear()
+	{
+		System.out.println("Select Year:");
+	}
+	
+	public void selectGender()
 	{
 		System.out.println("Select Gender:");
-		String strGender=scannerSc.next();
-		System.out.println("Gender:"+strGender);
+		
 	}
-	public void verifySignupButton()
+	public void clickOnSignUpButton()
 	{
 		System.out.println("Click on Signup button:");
 		System.out.println("Facebook Account created sucessfully");
