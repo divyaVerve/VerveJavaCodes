@@ -6,19 +6,23 @@ public class SignUpPage {
 	{
 		System.out.println("Signup page is displayed:");
 	}
-	public void setFirstName()
+	public void setFirstName(String strName)
 	{
-		System.out.println("Enter the FirstName:");
+		System.out.println("Enter the FirstName:"+strName);
 		
 	}
-	public void setSurname()
+	public void setSurname(String strName1)
 	{
-		System.out.println("Enter the Surname:");
+		System.out.println("Enter the Surname:"+strName1);
 		
 	}
-	public void setMobileNumberOrEmailId()
+	public void setMobileNumber(String intNum1)
 	{
-		System.out.println("Enter Mobile Number or Email id:");
+		System.out.println("Enter Mobile Number:"+intNum1);
+	}
+	public void setEmailId(String strEmail)
+	{
+		System.out.println("Enter Email id:"+strEmail);
 	}
 	public void setNewPassword()
 	{
@@ -46,6 +50,6 @@ public class SignUpPage {
 	public void clickOnSignUpButton()
 	{
 		System.out.println("Click on Signup button:");
-		System.out.println("Facebook Account created sucessfully");
+		System.out.println("Signup sucessfully");
 	}
 }
