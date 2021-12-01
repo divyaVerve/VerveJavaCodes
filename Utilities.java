@@ -5,28 +5,68 @@ import java.util.Random;
 public class Utilities {
 	 Random random = new Random();
 	
- public void getRandomFirstName()
+ public String getRandomFirstName()
  {
 	 
 	 String[] strArray = { "Divya", "Sonali", "Nikhil", "Pradnya","Tanush", "Kanchan", "Soham", "Rahul" };
 	 int intRes = random.nextInt(strArray.length);
-     System.out.println( strArray[intRes]);
+	return strArray[intRes];
+	 
+    
  }
- public void getRandomSurname()
+ public String getRandomSurname()
  {
 	 
 	 String[] strArray = { "Bulgunde", "Patil", "Pujari", "Aavate","Kakde", "Naik", "Kote", "Wankar" };
      int intRes = random.nextInt(strArray.length);
-     System.out.println(strArray[intRes]);
+     return strArray[intRes];
+    
  }
- public void getRandomMobileNumOrEmailId()
+ public String getRandomStrings(int length)
  {
-	 String[] strArray = { "neha.patil@gmail.com", "pradnya.wankar@gmail.com", "8421521218", "rahul.kote@gmail.com","9730815169", "9518977336", "kanchan.dhande@gmail.com" };
-     int intRes = random.nextInt(strArray.length);
-     System.out.println(strArray[intRes]);
+   String strValue ="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPZXCVBNMLKJHGFDSA";
+   String randomString="";
+   for(int index=0;index < length ;index++)
+   {
+       int rnum= (int) Math.floor((Math.random()*strValue.length()));
+       randomString +=strValue.substring(rnum, rnum+1);
+   }
+   return randomString;
  }
+  //Email
+  
+ public String getRandomEmaiId() 
+ {
+	 String names[] = { "@gmail.com"};
+	 String strEmailormobile = (names[new Random().nextInt(names.length)]);
+	 return strEmailormobile;
+ }
+ public String getRandomNumber()
+ {
+	
+	 String names[] = { "9"};
+	 String strEmailormobile = (names[new Random().nextInt(names.length)]);
+	 return strEmailormobile;
+ }
+ public long getRandomMobileNumber(int length)
+ {
+	 
+	 char[]Number=new char[9];
+	 Number[0]=(char) ((char)random.nextInt(9)+'1');
+	 for(int index=1;index<Number.length;index++)
+	 {
+		 Number[index]=(char)(random.nextInt(10)+'0');
+	 }
+	
+	  return Long.parseLong(new String(Number));
+	  
+ }
+
  public void getNewPassword()
  {
+	// String[] strArray = { "Verve@567", "Tech#34", "priya#765", "87home","dream6@", "10690", "S@fg56", "hkh@@" };
+	// int intRes = random.nextInt(strArray.length);
+    // System.out.println(strArray[intRes]);
 	 String strPassword="Verve@57";
 	 System.out.println(strPassword);
  }
@@ -58,5 +98,8 @@ public class Utilities {
  }
  
 	 
- }
+}
+
+
+
 
