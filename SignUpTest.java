@@ -13,12 +13,21 @@ public class SignUpTest {
 		Utilities objUtilities=new  Utilities();
 		objBaseTest.initialiseMeEnvironment();
 		objSignUpPage.verifySignUpPageIsDisplayed();
-		objSignUpPage.setFirstName();
-	    objUtilities.getRandomFirstName();
-		objSignUpPage.setSurname();
-		objUtilities.getRandomSurname();
-		objSignUpPage.setMobileNumberOrEmailId();
-		objUtilities.getRandomMobileNumOrEmailId();
+		
+	    String strName=objUtilities.getRandomFirstName()+objUtilities.getRandomStrings(3);
+	    objSignUpPage.setFirstName(strName);
+	    
+	    
+	    String strSurname=objUtilities.getRandomSurname()+objUtilities.getRandomStrings(3);
+	    objSignUpPage.setSurname(strSurname);
+		
+		
+		String longNum1=objUtilities.getRandomNumber()+objUtilities.getRandomMobileNumber(9);
+		objSignUpPage.setMobileNumber(longNum1);
+		
+		String strVal1=objUtilities.getRandomStrings(6) + objUtilities.getRandomEmaiId();
+		objSignUpPage.setEmailId(strVal1);
+		
 		objSignUpPage.setNewPassword();
 		objUtilities.getNewPassword();
 		objSignUpPage.selectDay();
