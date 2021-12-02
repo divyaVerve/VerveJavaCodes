@@ -17,19 +17,19 @@ public class Utilities {
  public String getRandomSurname()
  {
 	 
-	 String[] strArray = { "Bulgunde", "Patil", "Pujari", "Aavate","Kakde", "Naik", "Kote", "Wankar" };
+	 String[] strArray = {"Patil", "Pujari", "Aavate","Kakde", "Naik", "Kote", "Wankar"};
      int intRes = random.nextInt(strArray.length);
      return strArray[intRes];
     
  }
  public String getRandomStrings(int length)
  {
-   String strValue ="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPZXCVBNMLKJHGFDSA";
+   String strValue ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvuwxyz";
    String randomString="";
    for(int index=0;index < length ;index++)
    {
-       int rnum= (int) Math.floor((Math.random()*strValue.length()));
-       randomString +=strValue.substring(rnum, rnum+1);
+       int intNum= (int) Math.floor((Math.random()*strValue.length()));
+       randomString +=strValue.substring(intNum, intNum+1);
    }
    return randomString;
  }
@@ -37,16 +37,15 @@ public class Utilities {
   
  public String getRandomEmaiId() 
  {
-	 String names[] = { "@gmail.com"};
-	 String strEmailormobile = (names[new Random().nextInt(names.length)]);
-	 return strEmailormobile;
+	 String names[] = {"@gmail.com","@yahoo.com","@verve-square.com"};
+	 String strEmail = (names[new Random().nextInt(names.length)]);
+	 return strEmail;
  }
  public String getRandomNumber()
  {
-	
-	 String names[] = { "9"};
-	 String strEmailormobile = (names[new Random().nextInt(names.length)]);
-	 return strEmailormobile;
+	 String strMobileNum[]={"9","8","7"};
+	 String strNum=strMobileNum[new Random().nextInt(strMobileNum.length)];
+	return strNum;
  }
  public long getRandomMobileNumber(int length)
  {
@@ -85,7 +84,7 @@ public class Utilities {
  }
  public void getRandomYear()
  {
-	 int intMax=2017;
+	 int intMax=2016;
 	 int intMin=1905;
      int intRes = random.nextInt(intMax-intMin)+intMin;
      System.out.println(intRes);
