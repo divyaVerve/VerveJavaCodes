@@ -4,14 +4,23 @@ import com.generic.BaseTest;
 import com.generic.Utilities;
 import com.pageFactory.SignUpPage;
 
-public class SignUpTest {
-
+public class SignUpTest extends BaseTest{
+    public void beforeMethod()
+    {
+    	this.initialiseMeEnvironment();
+    }
+	public void afterMethod()
+	{
+		this.tearDown();
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		BaseTest objBaseTest=new BaseTest();
+		//BaseTest objBaseTest=new BaseTest();
 		SignUpPage objSignUpPage=new SignUpPage();
 		Utilities objUtilities=new  Utilities();
-		objBaseTest.initialiseMeEnvironment();
+		SignUpTest objSignUpTest=new SignUpTest();
+		//objBaseTest.initialiseMeEnvironment();
+		objSignUpTest.initialiseMeEnvironment();
 		objSignUpPage.verifySignUpPageIsDisplayed();
 		
 	    String strName=objUtilities.getRandomFirstName()+objUtilities.getRandomStrings(3);
@@ -39,8 +48,9 @@ public class SignUpTest {
 		objSignUpPage.selectGender();
 		objUtilities.getRandomGender();
 		objSignUpPage.clickOnSignUpButton();
-		objBaseTest.tearDown();
+		objSignUpTest.afterMethod();
+		//objBaseTest.tearDown();
+		
 	}
 
 }
-

@@ -1,6 +1,8 @@
 package com.pageFactory;
 
-public class SignUpPage {
+import com.generic.SeleniumWrapperFunctions;
+
+public class SignUpPage extends SeleniumWrapperFunctions {
 
 	public void verifySignUpPageIsDisplayed()
 	{
@@ -8,21 +10,23 @@ public class SignUpPage {
 	}
 	public void setFirstName(String strName)
 	{
-		System.out.println("Enter the FirstName:"+strName);
-		
+		System.out.print("Enter the FirstName:");
+		this.setText(strName);
 	}
 	public void setSurname(String strName1)
 	{
-		System.out.println("Enter the Surname:"+strName1);
-		
+		System.out.print("Enter the Surname:");
+		this.setText(strName1);
 	}
 	public void setMobileNumber(String intNum1)
 	{
-		System.out.println("Enter Mobile Number:"+intNum1);
+		System.out.println("Enter Mobile Number:");
+		this.setText(intNum1);
 	}
 	public void setEmailId(String strEmail)
 	{
-		System.out.println("Enter Email id:"+strEmail);
+		System.out.println("Enter Email id:");
+		this.setText(strEmail);
 	}
 	public void setNewPassword()
 	{
