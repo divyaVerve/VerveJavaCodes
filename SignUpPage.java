@@ -1,59 +1,74 @@
 package com.pageFactory;
 
-import com.generic.SeleniumWrapperFunctions;
+import org.openqa.selenium.By;
+import com.generic.BaseTest;
 
-public class SignUpPage extends SeleniumWrapperFunctions {
+public class SignUpPage{
 
+	 public BaseTest objBaseTest;
+	
+	public SignUpPage(BaseTest baseTest)
+	{
+		this.objBaseTest=baseTest;
+	}
 	public void verifySignUpPageIsDisplayed()
 	{
 		System.out.println("Signup page is displayed:");
 	}
-	public void setFirstName(String strName)
+    public void clickOnCreateNewAccount()
 	{
-		System.out.print("Enter the FirstName:");
-		this.setText(strName);
+		By loc_clickNewAccount=By.xpath("//a[starts-with(@id,'u_0_2')]");
+		objBaseTest.getObjSeleniumWrapperFunctions().click(loc_clickNewAccount);
 	}
-	public void setSurname(String strName1)
+	public void setFirstName(String strFirstName) throws InterruptedException
 	{
-		System.out.print("Enter the Surname:");
-		this.setText(strName1);
+		Thread.sleep(2000);
+		By loc_inpFirstName=By.xpath("//div[@id='reg_form_box']//input[@name='firstname']");
+		objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpFirstName, strFirstName);
 	}
-	public void setMobileNumber(String intNum1)
+	public void setSurname(String strSurname)
 	{
-		System.out.println("Enter Mobile Number:");
-		this.setText(intNum1);
+		By loc_inpSurname=By.xpath("//input[@name='lastname']");
+		objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpSurname, strSurname);
 	}
-	public void setEmailId(String strEmail)
+    public void setEmailId(String strEmail)
 	{
-		System.out.println("Enter Email id:");
-		this.setText(strEmail);
+		By loc_inpEmail=By.xpath("//input[@name='reg_email__']");
+		objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpEmail,strEmail);
 	}
-	public void setNewPassword()
+	public void reEnterEmail(String strEmail)
 	{
-		System.out.println("Enter New Password:");
+		By loc_inpReEmail=By.xpath("//input[@name='reg_email_confirmation__']");
+		objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpReEmail,strEmail);
 	}
-	public void selectDay()
+	public void setNewPassword(String strPassword)
 	{
-		System.out.println("Select Day:");
-		
+		By loc_inpPassword=By.xpath("//input[@id='password_step_input']");
+		objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpPassword,strPassword);
 	}
-	public void selectMonth()
+	public void selectDay(String strDay)
 	{
-		System.out.println("Select Month:");
+		By loc_inpSelectDay=By.xpath("//select[@id='day']");
+		objBaseTest.getObjSeleniumWrapperFunctions().selectByValue(loc_inpSelectDay,strDay);
 	}
-	public void selectYear()
+	public void selectMonth(String strMonth)
 	{
-		System.out.println("Select Year:");
+		By loc_inpSelectMonth=By.xpath("//select[@id='month']");
+		objBaseTest.getObjSeleniumWrapperFunctions().selectByValue(loc_inpSelectMonth,strMonth);
 	}
-	
+	public void selectYear(String strYear)
+	{
+		By loc_inpSelectYear=By.xpath("//select[@name='birthday_year']");
+		objBaseTest.getObjSeleniumWrapperFunctions().selectByValue(loc_inpSelectYear,strYear);
+	}
 	public void selectGender()
 	{
-		System.out.println("Select Gender:");
-		
+		By loc_clickNewAccount=By.xpath("//span[@data-name='gender_wrapper']//span//following-sibling::input[@value='1']");
+		objBaseTest.getObjSeleniumWrapperFunctions().click(loc_clickNewAccount);
 	}
 	public void clickOnSignUpButton()
 	{
-		System.out.println("Click on Signup button:");
-		System.out.println("Signup sucessfully");
-	}
+		By loc_clickNewAccount=By.xpath("//button[@name='websubmit']");
+		objBaseTest.getObjSeleniumWrapperFunctions().click(loc_clickNewAccount);
+    }
 }
