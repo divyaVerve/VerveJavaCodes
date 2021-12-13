@@ -1,14 +1,11 @@
-package com.generic;
+package com.abstraction.abstractClass;
 
-public class BaseTest {
-	public void initialiseMeEnvironment()
-	{
-		System.out.println("Open URL:www.facebook.com");
-	}
+public abstract class BaseTest {
+
+	public abstract void payment();
 	
 	public void tearDown()
 	{
-		System.out.println("Close the browser");
+		System.out.println("close application");
 	}
-
 }
