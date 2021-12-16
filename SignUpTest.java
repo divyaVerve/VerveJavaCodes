@@ -1,5 +1,9 @@
 package com.scripts;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
 import com.generic.BaseTest;
 import com.generic.Utilities;
 import com.pageFactory.SignUpPage;
@@ -7,16 +11,20 @@ import com.pageFactory.SignUpPage;
 public class SignUpTest extends BaseTest{
 	SignUpPage objSignUpPage;
 	Utilities objUtilities;
+	
+	@BeforeClass
     public void beforeMethod() 
     {
     	this.initialiseMeEnvironment();
     	objSignUpPage=new SignUpPage(this);
     	objUtilities=new Utilities();
-     }
-    public void verifySignUpPage() throws InterruptedException
-    {
-    	objSignUpPage.clickOnCreateNewAccount();
-    	String strName=objUtilities.getRandomFirstName()+objUtilities.getRandomStrings(2);
+    }
+	
+	@Test
+	public void TCID_100() throws InterruptedException
+	{
+		objSignUpPage.clickOnCreateNewAccount();
+		String strName=objUtilities.getRandomFirstName()+objUtilities.getRandomStrings(2);
     	objSignUpPage.setFirstName(strName);
     	String strSurname=objUtilities.getRandomSurname()+objUtilities.getRandomStrings(2);
   	    objSignUpPage.setSurname(strSurname);
@@ -30,16 +38,12 @@ public class SignUpTest extends BaseTest{
 		objSignUpPage.selectYear("1995");
 		objSignUpPage.selectGender();
 		objSignUpPage.clickOnSignUpButton();
-    }
+	}
+
+	@AfterClass
 	public void afterMethod() throws InterruptedException
 	{
 		this.tearDown();
 	}
-	public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
-		SignUpTest objSignUpTest=new SignUpTest();
-		objSignUpTest.beforeMethod();
-		objSignUpTest.verifySignUpPage();
-	    objSignUpTest.afterMethod();
-	}
+
 }
