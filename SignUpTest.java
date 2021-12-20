@@ -23,7 +23,10 @@ public class SignUpTest extends BaseTest{
 	@Test
 	public void TCID_100() throws InterruptedException
 	{
+		
 		objSignUpPage.clickOnCreateNewAccount();
+		objSignUpPage.verifySignUpPageIsDisplayed();
+		//objSignUpPage.verifyFirstName();
 		String strName=objUtilities.getRandomFirstName()+objUtilities.getRandomStrings(2);
     	objSignUpPage.setFirstName(strName);
     	String strSurname=objUtilities.getRandomSurname()+objUtilities.getRandomStrings(2);
@@ -34,7 +37,7 @@ public class SignUpTest extends BaseTest{
 		String strPassword=objUtilities.getNewPassword();
 		objSignUpPage.setNewPassword(strPassword);
 		objSignUpPage.selectDay("7");
-		objSignUpPage.selectMonth("5");
+		objSignUpPage.selectMonth("May");
 		objSignUpPage.selectYear("1995");
 		objSignUpPage.selectGender();
 		objSignUpPage.clickOnSignUpButton();
