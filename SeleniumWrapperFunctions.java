@@ -2,7 +2,10 @@ package com.generic;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SeleniumWrapperFunctions{
  
@@ -24,8 +27,7 @@ public class SeleniumWrapperFunctions{
 			return false;
 		}
 		
-		//System.out.println(strInputValue);
-	//	return strInputValue;
+	
 	}
 	public String getText(By locator){
 		try {
@@ -36,11 +38,7 @@ public class SeleniumWrapperFunctions{
 			return null;
 		}
 	}
-	/*public void click(By locator)
-	{
-		objBaseTest.getDriver().findElement(locator).click();
-		System.out.println("click");
-	} */
+	
 	
 	public boolean click(By locator)
 	{
@@ -53,17 +51,14 @@ public class SeleniumWrapperFunctions{
 			return false;
 		}
 	}
-	public void selectByValue(By locator,String strValue )
-	{
-		Select selVal=new Select(objBaseTest.getDriver().findElement(locator));
-		selVal.selectByValue(strValue);
-	}
-	public boolean setDropDown(By locator,String strDate)
+	
+    public boolean setDropDown(By locator,String strDate)
 	{
 	try{
 	WebElement dropDown=objBaseTest.getDriver().findElement(locator);
 	Select selectDropDown=new Select(dropDown);
 	selectDropDown.selectByVisibleText(strDate);
+	
 	return true;
 	}
 	catch(Exception exception)
@@ -72,5 +67,100 @@ public class SeleniumWrapperFunctions{
 	exception.printStackTrace();
 	return false;
 	}
+	
+	}
+
+	public boolean isSelected(By locator)
+	{
+	try{
+	
+		boolean strVal= objBaseTest.getDriver().findElement(locator).isSelected();
+	return strVal;
+	}
+	catch(Exception exception)
+	{
+	System.out.println("I got exception : "+exception.getMessage());
+	exception.printStackTrace();
+	return false;
+	}
+	}
+
+	public boolean dragAndDrop(By fromLocator,By toLocator)
+	{
+		try{
+			WebElement from=objBaseTest.getDriver().findElement(fromLocator);
+			WebElement to=objBaseTest.getDriver().findElement(toLocator);
+			Actions act=new Actions(objBaseTest.getDriver()) ;
+			
+			act.dragAndDrop(from, to).build().perform();
+			return true;
+		} catch(Exception e) {
+			System.out.println("I got exception:"+e.getMessage());
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public boolean selectDropDownOption(By locator,String strDropDownOption)
+	{
+		try{
+			WebElement dropDown=objBaseTest.getDriver().findElement(locator);
+			Select selectDropDown=new Select(dropDown);
+			selectDropDown.selectByVisibleText(strDropDownOption);
+			
+			return true;
+			}
+			catch(Exception exception)
+			{
+			System.out.println("I got exception : "+exception.getMessage());
+			exception.printStackTrace();
+			return false;
+			}
+	}
+	public WebElement setExplicitWait(By locator)
+	{
+		try{
+		 WebDriverWait wait = new WebDriverWait(objBaseTest.getDriver(), 5);
+		 WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		 return element;
+		}catch (Exception exception){
+			System.out.println("I got exception:"+exception.getMessage());
+			exception.printStackTrace();
+			return null;
+		}
+		
+	}
+	public void navigateToBack()
+	{
+		try{
+			objBaseTest.getDriver().navigate().back();
+			
+		}catch (Exception exception){
+			System.out.println("I got exception:"+exception.getMessage());
+			exception.printStackTrace();
+			
+		}
+		
+	}
+	public void navigateToRefresh()
+	{
+		try{
+			objBaseTest.getDriver().navigate().refresh();
+			
+		}catch (Exception exception){
+			System.out.println("I got exception:"+exception.getMessage());
+			exception.printStackTrace();
+			
+		}
+	}
+	public void navigateToForword()
+	{
+		try{
+			objBaseTest.getDriver().navigate().forward();
+			
+		}catch (Exception exception){
+			System.out.println("I got exception:"+exception.getMessage());
+			exception.printStackTrace();
+			
+		}
 	}
 }
