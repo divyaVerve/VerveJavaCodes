@@ -1,11 +1,14 @@
 package com.generic;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseTest {
- 
+
 	public static WebDriver driver=null;
-	public String strURL="https://www.facebook.com";
+	public String strURL="http://automationpractice.com/index.php";
+	//public String strURL="https://the-internet.herokuapp.com/";
+	//public String strURL="https://www.facebook.com/";
 	
 	private SeleniumWrapperFunctions objSeleniumWrapperFunctions;
 	public void setObjSeleniumWrapperFunctions(SeleniumWrapperFunctions objSeleniumWrapperFunctions) {

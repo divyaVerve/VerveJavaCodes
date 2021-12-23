@@ -3,6 +3,7 @@ package com.generic;
 import java.util.Random;
 
 public class Utilities {
+
 	 Random random = new Random();
 		
 	 public String getRandomFirstName()

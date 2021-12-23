@@ -7,8 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SeleniumWrapperFunctions{
- 
+public class SeleniumWrapperFunctions {
+
 	public BaseTest objBaseTest;
 	
 	public SeleniumWrapperFunctions(BaseTest baseTest)
@@ -70,7 +70,7 @@ public class SeleniumWrapperFunctions{
 	
 	}
 
-	public boolean isSelected(By locator)
+	public boolean verifyIsSelected(By locator)
 	{
 	try{
 	
@@ -85,6 +85,20 @@ public class SeleniumWrapperFunctions{
 	}
 	}
 
+	public boolean verifyPageIsDisplayed(By locator)
+	{
+	try{
+	
+		boolean strVal= objBaseTest.getDriver().findElement(locator).isDisplayed();
+	return strVal;
+	}
+	catch(Exception exception)
+	{
+	System.out.println("I got exception : "+exception.getMessage());
+	exception.printStackTrace();
+	return false;
+	}
+	}
 	public boolean dragAndDrop(By fromLocator,By toLocator)
 	{
 		try{
@@ -93,6 +107,19 @@ public class SeleniumWrapperFunctions{
 			Actions act=new Actions(objBaseTest.getDriver()) ;
 			
 			act.dragAndDrop(from, to).build().perform();
+			return true;
+		} catch(Exception e) {
+			System.out.println("I got exception:"+e.getMessage());
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public boolean doDoubleClick(By locator)
+	{
+		try{
+			WebElement dlClick=objBaseTest.getDriver().findElement(locator);
+			Actions act=new Actions(objBaseTest.getDriver()) ;
+			act.doubleClick(dlClick).perform();
 			return true;
 		} catch(Exception e) {
 			System.out.println("I got exception:"+e.getMessage());
@@ -129,38 +156,38 @@ public class SeleniumWrapperFunctions{
 		}
 		
 	}
-	public void navigateToBack()
+	public boolean navigateToBack()
 	{
 		try{
 			objBaseTest.getDriver().navigate().back();
-			
+			return true;
 		}catch (Exception exception){
 			System.out.println("I got exception:"+exception.getMessage());
 			exception.printStackTrace();
-			
+			return false;
 		}
 		
 	}
-	public void navigateToRefresh()
+	public boolean navigateToRefresh()
 	{
 		try{
 			objBaseTest.getDriver().navigate().refresh();
-			
+			return true;
 		}catch (Exception exception){
 			System.out.println("I got exception:"+exception.getMessage());
 			exception.printStackTrace();
-			
+			return false;
 		}
 	}
-	public void navigateToForword()
+	public boolean navigateToForword()
 	{
 		try{
 			objBaseTest.getDriver().navigate().forward();
-			
+			return true;
 		}catch (Exception exception){
 			System.out.println("I got exception:"+exception.getMessage());
 			exception.printStackTrace();
-			
+			return false;
 		}
 	}
 }
