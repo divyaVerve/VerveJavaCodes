@@ -8,7 +8,7 @@ import com.flows.LoginLogoutFlow;
 import com.flows.MyAccountFlow;
 import com.flows.ProductFlow;
 import com.generic.BaseTest;
-import com.generic.Utilities;
+//import com.generic.Utilities;
 import com.pageFactory.LoginPage;
 import com.pageFactory.MyAccountHomePage;
 import com.pageFactory.ProductPage;
@@ -35,7 +35,7 @@ public class LoginLogoutTest extends BaseTest{
 	
 	
 	@BeforeClass
-    public void beforeMethod() 
+    public void initializePreRequisiteAndEnv() 
     {
     	this.initialiseMeEnvironment();
     	this.initializeWebPageAndFlows();
@@ -44,8 +44,11 @@ public class LoginLogoutTest extends BaseTest{
 	@Test(priority=1)
 	public void TCID_101_verifySignInFunctionality() 
 	{
+		
 		objLoginPage.clickOnLinkSignIn();
+		objLoginPage.getAllLinksOnSignInPage();
 		objLoginPage.verifySignInPageIsDisplayed();
+	//	objLoginLogoutFlow.verifySignInTextIsDisplayed();
 		objLoginLogoutFlow.doLogin();
 		objMyAccountHomePage.verifyUserIsLoggedInSucessfully();
 	}
@@ -58,7 +61,7 @@ public class LoginLogoutTest extends BaseTest{
 	public void TCID_103_verifySortBy()
 	{
 		objProductPage.verifySortBy("Price: Lowest first");
-	  //objMyAccountHomePage.verifySortBy("Price: Lowest first");
+	 
 	}
 	@Test(priority=4)
 	public void TCID_104_verifyProduct()
@@ -69,14 +72,15 @@ public class LoginLogoutTest extends BaseTest{
 	public void TCID_105_verifyAddToCart()
 	{
 		objProductFlow.doClickOnAddToCart();
-		//objLoginLogoutFlow.doClickOnAddToCart();
+		
 	}
 	
 	
-	/*@AfterClass
-	public void afterMethod() throws InterruptedException
+	
+	@AfterClass
+	public void afterMethodWebEnv() throws InterruptedException
 	{
 		this.tearDown();
-	} */
+	} 
 	
 }

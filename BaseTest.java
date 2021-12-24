@@ -1,12 +1,16 @@
 package com.generic;
 
+import java.io.FileInputStream;
+import java.util.Properties;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseTest {
 
 	public static WebDriver driver=null;
-	public String strURL="http://automationpractice.com/index.php";
+	public Properties objConfig;
+	public String strURL="";
 	//public String strURL="https://the-internet.herokuapp.com/";
 	//public String strURL="https://www.facebook.com/";
 	
@@ -16,13 +20,17 @@ public class BaseTest {
 	}
 	public void initialiseMeEnvironment()
 	{
+		this.loadConfigProperties();
 		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"/src/main/resources/driver/chromedriver.exe");
 		driver=new ChromeDriver();
 		objSeleniumWrapperFunctions=new SeleniumWrapperFunctions(this);
 		this.setObjSeleniumWrapperFunctions(objSeleniumWrapperFunctions);
+		strURL=objConfig.getProperty("AUT_URL");
 		driver.get(strURL);
-		System.out.println("Open URL:"+strURL);
 		driver.manage().window().maximize();
+		objSeleniumWrapperFunctions.setImplicitlyWait(10);
+		System.out.println("Open URL:"+strURL);
+		//driver.manage().window().maximize();
 		System.out.println("Title:"+driver.getTitle());
 		System.out.println("Current URL:"+driver.getCurrentUrl());
 		try{
@@ -44,5 +52,17 @@ public class BaseTest {
 	{
 		Thread.sleep(2000);
 		driver.close();
+	}
+	
+	//Reusable generic method
+	public void loadConfigProperties()
+	{
+		try
+		{
+		objConfig=new Properties();
+		objConfig.load(new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/configuration/config.properties"));
+	} catch (Exception exception){
+		System.out.println("I got Exception:"+exception.getMessage());
+	}
 	}
 }

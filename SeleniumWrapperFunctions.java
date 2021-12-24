@@ -1,10 +1,17 @@
 package com.generic;
 
+import java.time.Duration;
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SeleniumWrapperFunctions {
@@ -146,7 +153,7 @@ public class SeleniumWrapperFunctions {
 	public WebElement setExplicitWait(By locator)
 	{
 		try{
-		 WebDriverWait wait = new WebDriverWait(objBaseTest.getDriver(), 5);
+		 WebDriverWait wait = new WebDriverWait(objBaseTest.getDriver(), 10);
 		 WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 		 return element;
 		}catch (Exception exception){
@@ -189,5 +196,35 @@ public class SeleniumWrapperFunctions {
 			exception.printStackTrace();
 			return false;
 		}
+	}
+	public boolean setImplicitlyWait(int waitTime)
+	{
+		try{
+	    objBaseTest.getDriver().manage().timeouts().implicitlyWait(waitTime, TimeUnit.SECONDS);
+		return true;
+    	}catch (Exception exception){
+		System.out.println("I got exception:"+exception.getMessage());
+		exception.printStackTrace();
+		return false;
+	}
+	}
+	
+	public boolean fluentWait(By locator)
+	{
+    try
+	{
+	Wait<WebDriver> objWait=new FluentWait<WebDriver>(objBaseTest.getDriver())
+	.withTimeout(Duration.ofSeconds(10))
+	.pollingEvery(Duration.ofSeconds(2))
+	.withMessage("Your desired element is not found")
+	.ignoring(NoSuchElementException.class);
+	objWait.until(ExpectedConditions.presenceOfElementLocated(locator));
+	return true;
+    }
+	catch(Exception exception)
+	{
+	System.out.println("I got exception : "+exception.getMessage());
+	return false;
+	}
 	}
 }
