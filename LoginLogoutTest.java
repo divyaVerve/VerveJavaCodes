@@ -1,19 +1,22 @@
 package com.scripts;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.flows.LoginLogoutFlow;
 import com.flows.MyAccountFlow;
 import com.flows.ProductFlow;
 import com.generic.BaseTest;
+import com.generic.CustomListeners;
 //import com.generic.Utilities;
 import com.pageFactory.LoginPage;
 import com.pageFactory.MyAccountHomePage;
 import com.pageFactory.ProductPage;
 
-
+@Listeners(CustomListeners.class)
 public class LoginLogoutTest extends BaseTest{
 
 	private LoginPage objLoginPage;
@@ -47,15 +50,18 @@ public class LoginLogoutTest extends BaseTest{
 		
 		objLoginPage.clickOnLinkSignIn();
 		objLoginPage.getAllLinksOnSignInPage();
+		objLoginPage.getAllBrokenLinksPresentOnLogInPage();
 		objLoginPage.verifySignInPageIsDisplayed();
 	//	objLoginLogoutFlow.verifySignInTextIsDisplayed();
 		objLoginLogoutFlow.doLogin();
 		objMyAccountHomePage.verifyUserIsLoggedInSucessfully();
+		Assert.assertEquals(false, true);
 	}
 	@Test(priority=2)
 	public void TCID_102_verifySearchFunctionality()
 	{
 		objMyAccountFlow.doSearch();
+		Assert.assertEquals(false, true);
 	}
 	@Test(priority=3)
 	public void TCID_103_verifySortBy()
@@ -71,6 +77,7 @@ public class LoginLogoutTest extends BaseTest{
 	@Test(priority=5)
 	public void TCID_105_verifyAddToCart()
 	{
+		
 		objProductFlow.doClickOnAddToCart();
 		
 	}

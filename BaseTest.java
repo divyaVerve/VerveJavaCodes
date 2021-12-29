@@ -10,6 +10,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Reporter;
 
 public class BaseTest {
 
@@ -58,7 +59,7 @@ public class BaseTest {
 		Thread.sleep(2000);
 		driver.close();
 	}
-	public void failed(String testMethodName) 
+  /*	public void failed(String testMethodName) 
 	{
 		File srcFile=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		try {
@@ -67,7 +68,19 @@ public class BaseTest {
 			
 			e.printStackTrace();
 		}
-	}
+	} */
+	
+	public void getScreenShotPath(String testCaseName) throws IOException
+	{
+	TakesScreenshot screenShot =(TakesScreenshot)getDriver();
+	System.out.println(screenShot);
+	File source=screenShot.getScreenshotAs(OutputType.FILE);
+	String destinationFile=System.getProperty("user.dir")+"\\screenshots\\"+testCaseName+".png";
+	System.out.println(destinationFile);
+	FileUtils.copyFile(source,new File(destinationFile)); System.setProperty("org.uncommons.reportng.escape-output","false");
+	Reporter.log("<a href="+destinationFile+">Screenshot link</a>"); }
+
+
 	
 	//Reusable generic method
 	public void loadConfigProperties()
