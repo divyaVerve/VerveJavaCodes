@@ -36,7 +36,7 @@ public class LoginLogoutTestByDivya extends BaseTest {
 
 		@BeforeClass(groups = { "P1", "P2", "P3" })
 		public void initializeEnvironment() {
-			this.initializeWebEnvironment("excel/KST");
+			this.initializeWebEnvironment("excel/DRB");
 			this.initializeFlowsAndPages();
 			/* Resource Name has to be before login */
 			objCommonFlow.setResourceName("Khushbu Borole");
@@ -66,20 +66,88 @@ public class LoginLogoutTestByDivya extends BaseTest {
 			System.out.println("Video Recording Stopped ....!!");
 		}
 		
-		@Title("TCID_101_VerifyLoginFunctionality")
+		@Title("TCID_110_VerifyLoginFunctionality")
 		@Description("Verify user should login into the system")
-		@Test(priority = 1, groups = { "P1" })
-		public void TCID_101_VerifyLoginFunctionality() {
-			this.loadTestData("TCID_101_VerifyLoginFunctionality");
+	//	@Test(priority = 1, groups = { "P1" })
+		public void TCID_110_VerifyLoginFunctionality() {
+			this.loadTestData("TCID_110_VerifyLoginFunctionality");
 			if (!this.getObjUtilities().dpString("runmode").equals("Y")) {
 				throw new SkipException("Run Mode 'No'");
 			}
 			objCommonFlow.openAUT_URL();
 			objLoginLogoutFlowByDivya.doLoginWithExcelParameter();
 		}
+		@Title("TCID_111_VerifyInvalidPasswordErrorMsg")
+		@Description("Verify Error msg displayed")
+		//@Test(priority = 2)
+		public void TCID_111_VerifyInvalidPasswordErrorMsg() {
+			this.loadTestData("TCID_111_VerifyInvalidPasswordErrorMsg");
+			if (!this.getObjUtilities().dpString("runmode").equals("Y")) {
+				throw new SkipException("Run Mode 'No'");
+			}
+			objCommonFlow.openAUT_URL();
+			objLoginLogoutFlowByDivya.doLoginWithExcelParameter();
+		}
+		@Title("TCID_112_VerifyInvalidUsernameErrorMsg")
+		@Description("Verify Error msg displayed")
+		//@Test(priority = 3)
+		public void TCID_112_VerifyInvalidUsernameErrorMsg() {
+			this.loadTestData("TCID_112_VerifyInvalidUsernameErrorMsg");
+			if (!this.getObjUtilities().dpString("runmode").equals("Y")) {
+				throw new SkipException("Run Mode 'No'");
+			}
+			objCommonFlow.openAUT_URL();
+			objLoginLogoutFlowByDivya.doLoginWithExcelParameter();
+		}
+		@Title("TCID_113_VerifyInvalidUsernameAndPasswordErrorMsg")
+		@Description("Verify Error msg displayed")
+		//@Test(priority = 4)
+		public void TCID_113_VerifyInvalidUsernameAndPasswordErrorMsg() {
+			this.loadTestData("TCID_113_VerifyInvalidUsernameAndPasswordErrorMsg");
+			if (!this.getObjUtilities().dpString("runmode").equals("Y")) {
+				throw new SkipException("Run Mode 'No'");
+			}
+			objCommonFlow.openAUT_URL();
+			objLoginLogoutFlowByDivya.doLoginWithExcelParameter();
+		}
+		@Title("TCID_114_VerifyBlankPasswordErrorMsg")
+		@Description("Verify Error msg displayed")
+		//@Test(priority = 5)
+		public void TCID_114_VerifyBlankPasswordErrorMsg() {
+			this.loadTestData("TCID_114_VerifyBlankPasswordErrorMsg");
+			if (!this.getObjUtilities().dpString("runmode").equals("Y")) {
+				throw new SkipException("Run Mode 'No'");
+			}
+			objCommonFlow.openAUT_URL();
+			objLoginLogoutFlowByDivya.doLoginWithExcelParameter();
+		}
+		
+		@Title("TCID_115_VerifyBlankUsernameErrorMsg")
+		@Description("Verify Error msg displayed")
+		//@Test(priority = 6)
+		public void TCID_115_VerifyBlankUsernameErrorMsg() {
+			this.loadTestData("TCID_115_VerifyBlankUsernameErrorMsg");
+			if (!this.getObjUtilities().dpString("runmode").equals("Y")) {
+				throw new SkipException("Run Mode 'No'");
+			}
+			objCommonFlow.openAUT_URL();
+			objLoginLogoutFlowByDivya.doLoginWithExcelParameter();
+		}
+		@Title("TCID_116_VerifyBlankUsernameAndPasswordErrorMsg")
+		@Description("Verify Error msg displayed")
+		@Test(priority = 7)
+		public void TCID_116_VerifyBlankUsernameAndPasswordErrorMsg() {
+			this.loadTestData("TCID_116_VerifyBlankUsernameAndPasswordErrorMsg");
+			if (!this.getObjUtilities().dpString("runmode").equals("Y")) {
+				throw new SkipException("Run Mode 'No'");
+			}
+			objCommonFlow.openAUT_URL();
+			objLoginLogoutFlowByDivya.doLoginWithExcelParameter();
+		}
+		
 		@Title("TCID_102_VerifyLogoutFunctionality")
 		@Description("Verify user should logout system")
-		@Test(priority = 2, groups = { "P1" })
+		//@Test(priority = 5, groups = { "P1" })
 		public void TCID_102_VerifyLogoutFunctionality() {
 			this.loadTestData("TCID_102_VerifyLogoutFunctionality");
 			if (!this.getObjUtilities().dpString("runmode").equals("Y")) {

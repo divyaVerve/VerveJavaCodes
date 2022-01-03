@@ -51,6 +51,10 @@ public class LoginLogoutFlowByDivya {
 		
 		@Step("Login into the system.")
 		public void doLoginWithExcelParameter() {
+			//testData=objPojo.getObjUtilities().dpString("firstName");
+			//System.out.println("My First Name:"+testData);
+			//testData=objPojo.getObjUtilities().dpString("lastName");
+			//System.out.println("My Surname:"+testData);
 			testData = objPojo.getObjUtilities().dpString("userid");
 			if (!testData.equals(""))
 				objLoginPageByDivya.setUserID(testData);
@@ -61,6 +65,35 @@ public class LoginLogoutFlowByDivya {
 			if(!testData.equals(""))
 			objLoginPageByDivya.selectLoginWithOptions(testData);
 			objLoginPageByDivya.clickGetStarted();
+			objPojo.getObjWrapperFunctions().waitFor(2);
+			if(objLoginPageByDivya.isInvalidPasswordErrorMsgDisplayed())
+			{
+				objPojo.getObjUtilities().logReporter("Getting Invalid password error message displayed", true);
+				
+			} 
+			else	if(objLoginPageByDivya.isInvalidUsernameErrorMsgDisplayed())
+			{
+				objPojo.getObjUtilities().logReporter("Getting Invalid Username error message displayed", true);
+				
+			}
+			else	if(objLoginPageByDivya.isInvalidUsernameAndPasswordErrorMsgDisplayed())
+			{
+				objPojo.getObjUtilities().logReporter("Getting Invalid Username and Password error message displayed", true);
+			}
+			else if(objLoginPageByDivya.isBlankUsernameErrorMsgDisplayed()&& objLoginPageByDivya.isBlankPasswordErrorMsgDisplayed())
+			{
+				objPojo.getObjUtilities().logReporter("Getting Blank Username and Password", true);
+			}
+			else if(objLoginPageByDivya.isBlankPasswordErrorMsgDisplayed())
+			{
+				objPojo.getObjUtilities().logReporter("Getting Blank Password", true);
+			} 
+			else if(objLoginPageByDivya.isBlankUsernameErrorMsgDisplayed())
+			{
+				objPojo.getObjUtilities().logReporter("Getting Blank Username", true);
+			}
+			
+			else {
 			objSelectRolePopUpPage.verifySelectRolePopupPageIsDisplayed();
 			testData = objPojo.getObjUtilities().dpString("SelectUserRole");
 			if(!testData.equals(""))
@@ -70,11 +103,13 @@ public class LoginLogoutFlowByDivya {
 			testData = objPojo.getObjUtilities().dpString("loginTitle");
 			if(!testData.equals(""))
 				objLoginPageByDivya.verifyUserLoggedIn(testData);
+			}
 		}
+			
 		@Step("Logout eMedicareSync application")
 		public void doLogout(){
 			if(objDashboardPage.isCloseCrossButtonIsDisplayed())
-				objDashboardPage.clickCrossCloseButton();
+				//objDashboardPage.clickCrossCloseButton();
 				
 			objDashboardPage.clickUserIcon();
 			if(objDashboardPage.isLogOffPopUpIsDisplayed()){

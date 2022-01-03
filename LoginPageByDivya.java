@@ -33,6 +33,10 @@ public class LoginPageByDivya {
 		By loc_drpDashboard = By.xpath("//select[@id='StartIN']");
 		By loc_btnGetStarted = By.xpath("//button[text()='Get Started']");
 		By loc_linkLogOff=By.xpath("//a[text()='Log off']");
+		By loc_errorMessageForBlankPassword=By.xpath("//span[text()='The Password field is required.']");
+		By loc_errorMessageForBlankUsername=By.xpath("//span[text()='The User name field is required.']");
+		By loc_errorMessageInvalidUesrnameOrPassword=By.xpath("//ul/li[text()='Invalid username or password...Try Again!!!']");
+		By loc_errorMessageInvalidPassword=By.xpath("//ul/li[text()='Invalid password...Try Again!!!']");
 		
 		public void verifyUserIsOneMedicareSyncLoginPage()
 		{
@@ -57,6 +61,40 @@ public class LoginPageByDivya {
 	    public void verifyUserLoggedIn(String strTitle){
 	    	objPojo.getObjUtilities().logReporter("Verify user login is successfull by using page title",objPojo.getDriver().getTitle(),strTitle,objPojo.getDriver().getTitle().toLowerCase().contains(strTitle.toLowerCase()));
 	    }
+	    
+	    public boolean isInvalidPasswordErrorMsgDisplayed()
+	    {
+	    	return objPojo.getObjWrapperFunctions().checkElementDisplayed(loc_errorMessageInvalidPassword);
+	    }
+	    public void verifyInvalidPasswordErrorMsgDisplayed()
+	    {
+	    	objPojo.getObjUtilities().logReporter("Verify Invalid Password message is displayed sucessfully",objPojo.getObjWrapperFunctions().checkElementDisplayed(loc_errorMessageInvalidPassword));
+	    }
+	    public boolean isInvalidUsernameErrorMsgDisplayed()
+	    {
+	    	return objPojo.getObjWrapperFunctions().checkElementDisplayed(loc_errorMessageInvalidUesrnameOrPassword);
+	    }
+	    public void verifyInvalidUsernameErrorMsgDisplayed()
+	    {
+	    	objPojo.getObjUtilities().logReporter("Verify Invalid Password message is displayed sucessfully",objPojo.getObjWrapperFunctions().checkElementDisplayed(loc_errorMessageInvalidUesrnameOrPassword));
+	    }
+	    public boolean isInvalidUsernameAndPasswordErrorMsgDisplayed()
+	    {
+	    	return objPojo.getObjWrapperFunctions().checkElementDisplayed(loc_errorMessageInvalidUesrnameOrPassword);
+	    }
+	    public void verifyInvalidUsernameAndPasswordErrorMsgDisplayed()
+	    {
+	    	objPojo.getObjUtilities().logReporter("Verify Invalid Password message is displayed sucessfully",objPojo.getObjWrapperFunctions().checkElementDisplayed(loc_errorMessageInvalidUesrnameOrPassword));
+	    }
+	    public boolean isBlankPasswordErrorMsgDisplayed()
+	    {
+	    	return objPojo.getObjWrapperFunctions().checkElementDisplayed(loc_errorMessageForBlankPassword);
+	    } 
+	    public boolean isBlankUsernameErrorMsgDisplayed()
+	    {
+	    	return objPojo.getObjWrapperFunctions().checkElementDisplayed(loc_errorMessageForBlankUsername);
+	    }
+	  
 	    public void clickLogout(){
 	    	objPojo.getObjUtilities().logReporter("Click 'Logout' button",objPojo.getObjWrapperFunctions().click(loc_linkLogOff));
 	    }
