@@ -1,10 +1,11 @@
-package com.practice;
+package com.vstl;
 
 import java.util.Scanner;
 
 public class Palindrome {
 
-	public static void main(String[] args) {
+	public void checkPalindrome()
+	{
 		int intNum1;
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter number:");
@@ -23,6 +24,11 @@ public class Palindrome {
 			 System.out.println("Number is palindrome");
 			else
 				System.out.println("Number is not palindrome");
+	}
+	public static void main(String[] args) {
+		
+		Palindrome objPalindrome=new Palindrome();
+		objPalindrome.checkPalindrome();
 	}
 
 }
